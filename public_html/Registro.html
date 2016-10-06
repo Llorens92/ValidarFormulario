@@ -15,7 +15,7 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <form onsubmit="Validar()" method="get" enctype="multipart/form-data">
+            <form onsubmit="return Validar()" method="get" enctype="multipart/form-data" action="Procesar_Alta.html">
                 <br><br><br>
                 <div id="div1">                  
                     <p>NIF: <input type="text" name="NIF" maxlength="9"></p>
@@ -64,7 +64,7 @@ and open the template in the editor.
                 Foto Carnet    <input type="file" name="fichero">
                 </div>
                 <div id="div3">
-                <input checked type="checkbox" name="ch1" value="pene2">Deseo recibir información por email
+                <input type="checkbox" name="email">Deseo recibir información por email
                 </div>
                 <div id="div4">
                 <input type="submit" name="Aceptar" value="aceptar">            

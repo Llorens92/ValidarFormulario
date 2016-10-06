@@ -1,9 +1,6 @@
-function Validar() {
-    if (ValidarNotEmpty()) {
-        document.getElementsByTagName("form")[0].action = "Procesar_Alta.html";
-    } else {
-        document.getElementsByTagName("form")[0].action = "Error.html";
-    }
+function Validar() {    
+    alert(!document.getElementsByTagName("input")[10].checked);
+    return ValidarNotEmpty();
 }
 
 function ValidarNIF() {
@@ -158,11 +155,11 @@ function Validar8PrimDig() {
 
 function ValidarNotEmpty() {
     var correcto = false;
-    for (var i = 0; i < document.getElementsByTagName("input").length && !correcto; i++) {
+    for (var i = 0; i < document.getElementsByTagName("input").length-1 && !correcto; i++) {
         if (document.getElementsByTagName("input")[i].value.length === 0) {
             alert("No puede dejar el campo " + nomInputs[i] + " vacío");
             correcto = true;
-        }
+        } 
     }
     return !correcto;
 }
