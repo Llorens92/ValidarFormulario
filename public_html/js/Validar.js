@@ -1,15 +1,44 @@
-function Validar() {    
-    alert(!document.getElementsByTagName("input")[10].checked);
+function Validar() {
     return ValidarNotEmpty();
 }
 
-function ValidarNIF() {
-    if (Validar9Digitos() && ValidarNoEspacios() && Validar8PrimDig()) {
-        document.getElementsByTagName("form")[0].action = "Procesar_Alta.html";
-    } else {
-        document.getElementsByTagName("form")[0].action = "Error.html";
+function ValidarNomyApe(num) {
+    var arrayCar = document.getElementsByTagName("input")[num].value.split("");
+    var correcto = true;
+    for (var i = 0; i < arrayCar.length && correcto; i++) {
+        if (!isNaN(arrayCar[i])) {
+            correcto = false;
+            alert("El nombre y los apellidos solo pueden estar compuestos por letras");
+        }
     }
-    document.getElementById("form")[0].submit();
+    return correcto;
+}
+
+function ValidarEmail() {
+    var arrayCar = document.getElementsByTagName("input")[4].value.split("");
+    var correctoArro = false;
+    for (var i = 0; i < arrayCar.length && correcto; i++) {
+        if (!isNaN(arrayCar[i])) {
+            correcto = false;
+        }
+    }
+    for (var i = 0; i < arrayCar.length && correctoArro; i++) {
+        if (arrayCar[i]==="@" && i!==0) {
+            correctoArro = true;
+        }
+    }    
+    var correctoPunto = false;
+    for (var i = 0; i < arrayCar.length && correctoPunto; i++) {
+        if (arrayCar[i]==="." && i>2) {
+            correctoPunto = true;
+        }
+    }
+            alert("El email debe tener un formato tal que así: ejemplo@ejem.extension");
+    return correcto;
+} 
+
+function ValidarNIF() {
+    return (ValidarNotEmpty() && Validar9Digitos() && ValidarNoEspacios() && Validar8PrimDig());
 }
 
 function Validar8PrimDig() {
@@ -17,134 +46,14 @@ function Validar8PrimDig() {
     var nums = document.getElementsByTagName("input")[0].value.substring(0, 8);
     nums = parseInt(nums);
     var letra = nif.substring(8, 9);
-    console.log(letra);
     var resto = nums % 23;
     var correcto = false;
     if (isNaN(nums)) {
         alert("Los 8 primeros caracteres del NIF deben ser números");
     } else {
-        switch (resto) {
-            case 0:
-                if (letra === "T" || letra === "t") {
-                    correcto = true;
-                }
-                break;
-            case 1:
-                if (letra === "R" || letra === "r") {
-                    console.log("TU PADRE");
-                    correcto = true;
-                }
-                break;
-            case 2:
-                if (letra === "W" || letra === "w") {
-                    correcto = true;
-                }
-                break;
-            case 3:
-                if (letra === "A" || letra === "a") {
-                    correcto = true;
-                }
-                break;
-            case 4:
-                if (letra === "G" || letra === "g") {
-                    correcto = true;
-                }
-                break;
-            case 5:
-                if (letra === "M" || letra === "m") {
-                    correcto = true;
-                }
-                break;
-            case 6:
-                if (letra === "Y" || letra === "y") {
-                    correcto = true;
-                }
-                break;
-            case 7:
-                if (letra === "F" || letra === "f") {
-                    correcto = true;
-                }
-                break;
-            case 8:
-                if (letra === "P" || letra === "p") {
-                    correcto = true;
-                }
-                break;
-            case 9:
-                if (letra === "D" || letra === "d") {
-                    correcto = true;
-                }
-                break;
-            case 10:
-                if (letra === "X" || letra === "x") {
-                    correcto = true;
-                }
-                break;
-            case 11:
-                if (letra === "B" || letra === "b") {
-                    correcto = true;
-                }
-                break;
-            case 12:
-                if (letra === "N" || letra === "n") {
-                    correcto = true;
-                }
-                break;
-            case 13:
-                if (letra === "J" || letra === "j") {
-                    correcto = true;
-                }
-                break;
-            case 14:
-                if (letra === "Z" || letra === "z") {
-                    correcto = true;
-                }
-                break;
-            case 15:
-                if (letra === "S" || letra === "s") {
-                    correcto = true;
-                }
-                break;
-            case 16:
-                if (letra === "Q" || letra === "q") {
-                    correcto = true;
-                }
-                break;
-            case 17:
-                if (letra === "V" || letra === "v") {
-                    correcto = true;
-                }
-                break;
-            case 18:
-                if (letra === "H" || letra === "h") {
-                    correcto = true;
-                }
-                break;
-            case 19:
-                if (letra === "L" || letra === "l") {
-                    correcto = true;
-                }
-                break;
-            case 20:
-                if (letra === "C" || letra === "c") {
-                    correcto = true;
-                }
-                break;
-            case 21:
-                if (letra === "K" || letra === "k") {
-                    correcto = true;
-                }
-                break;
-            case 22:
-                if (letra === "E" || letra === "e") {
-                    correcto = true;
-                }
-                break;
-            case 23:
-                if (letra === "T" || letra === "t") {
-                    correcto = true;
-                }
-                break;
+        var letrasValidas = ["t", "r", "w", "a", "g", "m", "y", "f", "p", "d", "x", "b", "n", "j", "z", "s", "q", "v", "h", "l", "c", "k", "e", "t"];
+        if (letrasValidas[resto] === letra.toLowerCase()) {
+            correcto = true;
         }
         if (!correcto) {
             alert("La letra del NIF no es correcta");
@@ -155,11 +64,11 @@ function Validar8PrimDig() {
 
 function ValidarNotEmpty() {
     var correcto = false;
-    for (var i = 0; i < document.getElementsByTagName("input").length-1 && !correcto; i++) {
+    for (var i = 0; i < document.getElementsByTagName("input").length - 1 && !correcto; i++) {
         if (document.getElementsByTagName("input")[i].value.length === 0) {
-            alert("No puede dejar el campo " + nomInputs[i] + " vacío");
+            alert("Debe rellenar todos los campos");
             correcto = true;
-        } 
+        }
     }
     return !correcto;
 }
