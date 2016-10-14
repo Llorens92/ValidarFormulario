@@ -17,25 +17,43 @@ function ValidarNomyApe(num) {
 function ValidarEmail() {
     var arrayCar = document.getElementsByTagName("input")[4].value.split("");
     var correctoArro = false;
-    for (var i = 0; i < arrayCar.length && correcto; i++) {
-        if (!isNaN(arrayCar[i])) {
-            correcto = false;
+    var posArro = -1;
+    console.log("1");
+    for (var i = 0; i < arrayCar.length && !correctoArro; i++) {
+        console.log(i);
+        console.log(arrayCar[i]);
+        console.log("  ");
+        if (arrayCar[i] === "@" && i !== 0 && i < arrayCar.length - 3) {
+            correctoArro = true;
+            posArro = i;
         }
     }
-    for (var i = 0; i < arrayCar.length && correctoArro; i++) {
-        if (arrayCar[i]==="@" && i!==0) {
-            correctoArro = true;
-        }
-    }    
+    console.log("2");
     var correctoPunto = false;
-    for (var i = 0; i < arrayCar.length && correctoPunto; i++) {
-        if (arrayCar[i]==="." && i>2) {
+    for (var i = 0; i < arrayCar.length && !correctoPunto; i++) {
+        console.log(i);
+        console.log(arrayCar[i]);
+        console.log("  ");
+        if (arrayCar[i] === "." && i > 2 && i < arrayCar.length - 1) {
             correctoPunto = true;
         }
     }
-            alert("El email debe tener un formato tal que así: ejemplo@ejem.extension");
-    return correcto;
-} 
+    var correctoNotNum = false;
+    console.log("3");
+    for (var i = posArro; i < arrayCar.length; i++) {
+        console.log(i);
+        console.log(arrayCar[i]);
+        console.log("  ");
+        if (isNaN(arrayCar[i])) {
+            correctoNotNum = true;
+        }
+    }
+    if (correctoArro && correctoPunto && correctoNotNum) {
+        document.getElementsByTagName("span")[0].setAttribute("class", "glyphicon glyphicon-ok text-success");  
+    } else {
+        document.getElementsByTagName("span")[0].setAttribute("class", "glyphicon glyphicon-remove text-danger");     
+    }
+}
 
 function ValidarNIF() {
     return (ValidarNotEmpty() && Validar9Digitos() && ValidarNoEspacios() && Validar8PrimDig());

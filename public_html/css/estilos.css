@@ -20,10 +20,12 @@ div{
     margin-left: 750px;
 }
 #div4{
+    float:none !important;
     margin-top: 40px;
     margin-left: 800px;
 }
 #div5{
+    float:none !important; 
     margin-top: 40px;
     margin-left: 700px;
 }
