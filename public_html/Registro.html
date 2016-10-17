@@ -24,37 +24,37 @@ and open the template in the editor.
                 </div>                
                 <div>      
                     <p>
-                        Apellidos: <input type="text" onkeyup="ValidarNomyApe(1)" name="aps" maxlength="80">
+                        Apellidos: <input type="text" onkeyup="ValidarNomyApe(1)" name="Apellidos" maxlength="80">
                     </p>
                 </div>
                 <div> 
                     <p>
-                        Nombre: <input type="text" onkeyup="ValidarNomyApe(2)" name="nom" maxlength="30">
+                        Nombre: <input type="text" onkeyup="ValidarNomyApe(2)" name="Nombre" maxlength="30">
                     </p>
                 </div>
                 <div> 
                     <p>
-                        Usuario: <input type="text" name="usu">
+                        Usuario: <input type="text" name="Usuario">
                     </p>
                 </div>
                 <div> 
                     <p>
-                        Email: <input type="text" name="mail" onblur="ValidarEmail()"> <span></span>
+                        Email: <input type="text" name="Email" onblur="ValidarEmail()"> <span></span>
                     </p>
                 </div>
                 <div> 
                     <p>
-                        Contraseña: <input type="password" name="pass" maxlength="10">
+                        Contraseña: <input type="password" onblur="ValidarPass()" name="Contraseña" maxlength="10"><span></span>
                     </p>
                 </div>
                 <br><br>
                 <div id="div2">
                     <ul style="list-style-type:none; display:inline-block">
                         <li>
-                            <input checked type="radio" name="SEXO" value="hombre">Hombre
+                            <input checked type="radio" name="Sexo" value="hombre">Hombre
                         </li>
                         <li>
-                            <input type="radio" name="SEXO" value="mujer">Mujer
+                            <input type="radio" name="Sexo" value="mujer">Mujer
                         </li>
                     </ul>
                     <select name="paises">
@@ -63,7 +63,7 @@ and open the template in the editor.
                         <option value="colombia">Colombia</option>
                         <option value="buthan">Buthan</option>
                     </select>
-                    Foto Carnet    <input type="file" name="fichero">
+                    Foto Carnet    <input type="file" name="Foto Carnet">
                 </div>
                 <div id="div3">
                     <input type="checkbox" name="email">Deseo recibir información por email
